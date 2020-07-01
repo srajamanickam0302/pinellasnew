@@ -26,7 +26,7 @@ nw_record as
                         ,  (SELECT CASE WHEN C_SK IS NULL THEN 0 ELSE C_SK END from (select max(CAT_SK) AS C_SK FROM PINELLAS.STAGING.T_DIM_CATEGORY ) A )
                 			  + row_number() over (order by a.CAT_ID,a.CAT_NAME desc) AS CAT_SK
 				from source_data  a
-				where not exists (select 1 from STAGING.T_DIM_CATEGORY b where a.CAT_ID=b.CAT_ID AND TRIM(a.CAT_NAME) = TRIM(b.CAT_NAME))
+				where not exists (select 1 from PINELLAS.STAGING.T_DIM_CATEGORY b where a.CAT_ID=b.CAT_ID AND TRIM(a.CAT_NAME) = TRIM(b.CAT_NAME))
 					),
 
 ex_record as
@@ -39,7 +39,7 @@ ex_record as
                           ,b.CREATED_DATETIME
                           ,to_timestamp_ntz(current_timestamp)  AS UPDATED_DATETIME
 					from source_data  a
-					join STAGING.T_DIM_CATEGORY b on ( a.CAT_ID=b.CAT_ID AND TRIM(a.CAT_NAME) = TRIM(b.CAT_NAME) )
+					join PINELLAS.STAGING.T_DIM_CATEGORY b on ( a.CAT_ID=b.CAT_ID AND TRIM(a.CAT_NAME) = TRIM(b.CAT_NAME) )
 				),
 final as
 (
