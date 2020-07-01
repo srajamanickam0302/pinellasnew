@@ -16,7 +16,7 @@ with source_data as (
    ),
 
 nw_record as
-	      (select           a.SEGMENT3 AS CAT_ID
+	      (select           a.CAT_ID AS CAT_ID
                         ,	a.CAT_NAME AS	CAT_NAME
                         , NULL AS	CAT_LEVEL1
                         , NULL AS	MAJOR_CATNAME
