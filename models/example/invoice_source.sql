@@ -1,0 +1,8 @@
+{{ config(materialized='ephemeral') }}
+SELECT
+    INVOICE_NUM        INVOICE_NUMBER,
+    DESCRIPTION        INVOICE_DESCRIPTION,
+    INVOICE_DATE,
+	INVOICE_ID /* Oracle EBS Natural Key */
+FROM
+    "FIVETRAN"."ORACLE_EBS_AP".AP_INVOICES_ALL

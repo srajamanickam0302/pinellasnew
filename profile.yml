@@ -1,0 +1,13 @@
+pinellas_sf:
+ target: dev
+ outputs:
+   dev:
+     type: snowflake
+     account: pinellas_cc.east-us-2.azure
+     user: FIVETRAN_USER
+     password: FiveTran20*
+     role: FIVETRAN_ROLE
+     database: FIVETRAN
+     warehouse: DEMO_WH
+     schema: information_layer
+     threads: 8
